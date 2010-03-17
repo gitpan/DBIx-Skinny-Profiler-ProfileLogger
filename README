@@ -1,0 +1,66 @@
+DBIx::Skinny::Profiler::ProfileLogger
+========================
+
+INSTALLATION
+
+To install this module type the following:
+
+   perl Makefile.PL
+   make
+   make test
+   make install
+
+NAME
+    DBIx::Skinny::Profiler::ProfileLogger - a profiler printing at once
+    instead of recording queries.
+
+SYNOPSIS
+        package Your::Model;
+    
+        use DBIx::Skinny::Profiler::ProfileLogger;
+        use DBIx::Skinny setup => +{
+            dsn => 'dbi:SQLite:',
+            username => '',
+            password => '',
+            profiler => >DBIx::Skinny::Profiler::ProfileLogger->new,
+        };
+    
+        # or 
+    
+        package main;
+    
+        my $skinny = Your::Model->new;
+        $skinny->attribute->{ profiler } = DBIx::Skinny::Profiler::ProfileLogger->new;
+    
+        # You set the environment variable SKINNY_PROFILE=1, then print to STDERR.
+        # If set SKINNY_PROFILE=1=/path/to/file, logs to the file.
+
+DESCRIPTION
+    DBIx::Skinny::Profiler records SQL statements and bind params but you
+    need to print out recorded queries manually.
+
+    This module prints out STDERR or your specified file at once instead of
+    recording queries.
+
+    The environmental variable "SKINNY_PROFILE" must be set with 1 for using
+    this profiler.
+
+      $ENV{SKINNY_PROFILE} = 1;
+
+    If you add a file path to its value, this module print to the spcified
+    file.
+
+      $ENV{SKINNY_PROFILE} = '1=/path/to/file'; # (DBIC_TRACE compat)
+
+SEE ALSO
+    DBIx::Skinny, DBIx::Skinny::Profiler
+
+AUTHOR
+    Makamaka Hannyaharamitu, <makamaka[at]cpan.org>
+
+COPYRIGHT AND LICENSE
+    Copyright 2010 by Makamaka Hannyaharamitu
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.
+
