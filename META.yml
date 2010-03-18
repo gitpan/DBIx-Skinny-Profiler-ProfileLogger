@@ -1,5 +1,5 @@
 ---
-abstract: 'a profiler printing at once instead of recording queries.'
+abstract: 'a profiler printing at once instead of recording queries (obsoleted).'
 author:
   - 'Makamaka Hannyaharamitu, <makamaka[at]cpan.org>'
 build_requires:
@@ -24,4 +24,4 @@ requires:
 resources:
   license: http://dev.perl.org/licenses/
   repository: http://github.com/makamaka/p5-dbix-skinny-profiler-profilelogger
-version: 0.05
+version: 0.06
